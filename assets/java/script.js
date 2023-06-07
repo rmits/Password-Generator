@@ -39,8 +39,8 @@ if (passwordSpecial) {
 
 var chosenPassword = '';
   for (var i = 0; i < passwordLength; i++) {
-    var randomIndex = Math.floor(Math.random() * allChars.length);
-    chosenPassword += allChars[randomIndex];
+    var randomIndex = Math.floor(Math.random() * charset.length);
+    chosenPassword += charset[randomIndex];
   }
 
   return chosenPassword;
