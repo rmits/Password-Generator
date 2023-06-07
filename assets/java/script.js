@@ -2,12 +2,13 @@
 var lowCharset = "abcdefghijklmnopqrstuvwxyz";
 var upCharset = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numCharset = "1234567890";
-var specialCharset = "!@#$%^&*()/<>";
+var specialCharset = "!#$%&')*+,-./:;<=>?]/[^_`{|~";
 var allChars = lowCharset + upCharset + numCharset + specialCharset;
-var charset = ''
 console.log(allChars);
 
 function generatePassword() {
+var charset = '';
+
 var passwordLength = prompt("Please input a number between 8 and 128 for the length of the password");
 console.log(passwordLength);
 if (passwordLength === '') {
@@ -20,29 +21,30 @@ if (passwordLength === '') {
 
 
 var passwordUppers = confirm("Would you like to include uppercase letters?");
-if (passwordUppers === true) {
-  charset = charset + upCharset
+if (passwordUppers) {
+  charset += upCharset;
 }
 var passwordLowers = confirm('Would you like to include lowercase letters?');
-if (passwordLowers === true) {
-  charset = charset + lowCharset
+if (passwordLowers) {
+  charset  +=  lowCharset;
 }
 var passwordNumbers = confirm('Would you like to include numbers?');
-if (passwordNumbers === true) {
-  charset = charset + numCharset
+if (passwordNumbers) {
+  charset  +=  numCharset;
 }
 var passwordSpecial = confirm('Would you like to include special characters?');
-if (passwordSpecial === true) {
-  charset = charset + specialCharset
-  console.log(charset)
+if (passwordSpecial) {
+  charset  +=  specialCharset;
 }
 
-for (var i = 0; i < passwordLength; i++) {
-var randomChooser = (Math.floor(Math.random() * charset));
-console.log(randomChooser)
-}
-} 
+var chosenPassword = '';
+  for (var i = 0; i < passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * allChars.length);
+    chosenPassword += allChars[randomIndex];
+  }
 
+  return chosenPassword;
+}
 
 
 
